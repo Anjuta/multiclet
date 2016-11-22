@@ -1,0 +1,33 @@
+.data
+LONG:
+	.long\
+		1, 2, 3, 1000
+DOUBLE:
+	.double\
+		1.0, 2.0, 3.0
+
+.text
+
+	rdl LONG
+	rdl LONG + 4
+	rdl LONG + 8
+	rdl LONG + 12
+	rdd DOUBLE
+	wrl @5, #R1  // J
+	wrl @5, #R2  // K
+	wrl @5, #R3  // L
+	wrl @5, #R4  // N8
+	wrl @5, #R5  // E     Как работать с массивами?
+	
+	complete
+CYCLE:
+		
+	get #R1	
+	get #R2
+	get #R3
+	get #R5
+	
+	
+
+	
+// По факту циклический сдвиг

@@ -1,0 +1,47 @@
+.data
+
+LONG:
+	.long\
+		1, 365000
+
+.text
+	rdl LONG
+	wrl @1, #R1  // J
+	rdl LONG + 4
+	wrl @1, #R2  // N2
+	
+	complete
+
+CYCLE:
+	getl #R1
+	
+	// if (J == 1)
+	//	J = 2;
+	// else
+	//	J = 3;
+	subl @1, 2
+	se @1, 2
+	sne @2, 3
+	max @1, @2
+	
+	// if (J > 2)
+	//	J = 0;
+	// else
+	//	J = 1;
+	subl @1, 2
+	sle @2, 1
+	
+	// if (J < 1)
+	//	J = 1;
+	// else
+	//	J = 0;
+	subl @1, 1
+	sge @1, 1
+	
+	wrl @1, #R1
+	get #R2
+	subl #R2, 1
+	wrl @1, #R2
+	jne @2, CYCLE
+	
+	complete

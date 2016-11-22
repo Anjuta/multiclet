@@ -1,0 +1,19 @@
+Инициализация X, Y, Z, T2, T, N8 (#R1, #R2, #R3, #R4, #R5, #R6)
+
+CYCLE:
+	get #R1
+	get #R2
+	get #R3
+	get #R4
+	get #R5
+
+	addd @5, @4
+	muld @2, @1
+	addd @1, @6
+	muld @4, @1
+	addd @3, @1
+	subd @1, @7
+	wrd @1, #R3
+
+	...
+	complete

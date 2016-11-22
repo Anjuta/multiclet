@@ -1,0 +1,29 @@
+:CYCLE
+	subl @K, @J
+	subl @L, @k
+	mull @J, @2
+	J := mull @1, @2
+	
+	subl @L, @J
+	mull @L, @K
+	mull @2, @K
+	K := subl @2, @1
+
+	subl @L, @K
+	addl @K, @J
+	L := mull @1, @2
+
+	I1 := subl @L, 1
+	I2 := subl @K, 1
+	addl @J, @K
+	addl @1, @L
+	mull @J, @K
+	mull @1, @L
+	
+	// Записать в массив
+	// wrl @E1 + I1, @3
+	// wrl @E1 + I2
+
+	subl @I, 1
+	set #R1, @1
+	jge #R1, CYCLE

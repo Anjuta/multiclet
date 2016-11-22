@@ -1,0 +1,41 @@
+.data
+
+LONG:
+	.long\
+		2, 3, 1000
+
+.text
+	rdl LONG
+	rdl LONG + 4
+	rdl LONG + 8
+	wrl @3, #R1  // J
+	wrl @3, #R2  // K
+	wrl @3, #R3  // N10
+
+	complete
+
+CYCLE:
+	get #R1
+	get #R2
+	addl @2, @1  // J
+	addl @1, @2  // K
+	subl @1, @2  // J
+	subl @2, @1
+	subl @1, @2  // K
+
+	wrl @1, #R2
+	wrl @4, #R1
+
+	get #R3
+	subl @1, 1
+	jge @1, CYCLE
+	complete
+
+// Если упростить
+	get #R1
+	get #R2
+	
+	wrl #R1, @1
+	wrl #R2, @3
+	...
+// Четность N10?
